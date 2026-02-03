@@ -18,7 +18,11 @@ export const CollectionName = {
   RESERVE_AGENT_CONFIG: 'reserve_agent_configs',
   DOOR_LOCK: 'door_locks',
   KIOSK: 'kiosks',
+  KIOSK_LOG: 'kiosk_logs',
   CUSTOM_CONFIG: 'custom_configs',
+  MILEAGE: 'mileages',
+  MILEAGE_MEMBER: 'mileage_members',
+  BREAKFAST: 'breakfasts',
 } as const;
 
 export type CollectionName = (typeof CollectionName)[keyof typeof CollectionName];

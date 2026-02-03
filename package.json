@@ -1,6 +1,6 @@
 {
   "name": "@kjm960725/eagle-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "iCrew Cloud API client for Node.js and browsers",
   "type": "module",
   "main": "dist/index.cjs",

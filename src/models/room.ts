@@ -39,6 +39,9 @@ export const RoomModelSchema = BaseModelSchema.extend({
   /** 현재 판매 ID */
   room_sale_id: z.string().nullable().optional(),
 
+  /** 입실 취소 여부 (readOnly) */
+  room_sale_deleted: z.boolean().default(false),
+
   /** 이전 판매 ID */
   previous_room_sale_id: z.string().nullable().optional(),
 

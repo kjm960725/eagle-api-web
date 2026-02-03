@@ -47,6 +47,8 @@ export const RoomStayType = {
   DAYS: 'DAYS',
   /** 장기 투숙 */
   LONG_DAYS: 'LONG_DAYS',
+  /** 기타 */
+  OTHER: 'OTHER',
 } as const;
 export type RoomStayType = (typeof RoomStayType)[keyof typeof RoomStayType];
 
@@ -107,6 +109,8 @@ export type RoomReserveVisitType = (typeof RoomReserveVisitType)[keyof typeof Ro
 export const RoomReserveState = {
   /** 생성됨 */
   GENERATED: 'GENERATED',
+  /** 만료됨 */
+  EXPIRED: 'EXPIRED',
   /** 취소됨 */
   CANCELED: 'CANCELED',
   /** 사용중 */
@@ -141,12 +145,16 @@ export const CcuVender = {
   WIN: 'WIN',
   /** 369시스템 */
   SYSTEM_369: 'SYSTEM_369',
+  /** 로마시스 */
+  ROMASYS: 'ROMASYS',
   /** 더엠알 */
   THE_MR: 'THE_MR',
   /** 케이테크 */
   KTECH: 'KTECH',
   /** 씨리얼 */
   SEEREAL: 'SEEREAL',
+  /** 산하정보통신 */
+  SANHA: 'SANHA',
 } as const;
 export type CcuVender = (typeof CcuVender)[keyof typeof CcuVender];
 
@@ -166,6 +174,25 @@ export const AccomBusinessSector = {
   OTHER: 'OTHER',
 } as const;
 export type AccomBusinessSector = (typeof AccomBusinessSector)[keyof typeof AccomBusinessSector];
+
+// ============================================================
+// App 관련 Enum
+// ============================================================
+
+/** App 개발사 */
+export const AppBender = {
+  /** 아이크루 */
+  ICREW: 'ICREW',
+  /** 신도이디에스 */
+  SHINDO: 'SHINDO',
+  /** 케이테크 */
+  KTECH: 'KTECH',
+  /** 신하아이티 */
+  SHNHAIT: 'SHNHAIT',
+  /** 루넷 */
+  ROONET: 'ROONET',
+} as const;
+export type AppBender = (typeof AppBender)[keyof typeof AppBender];
 
 // ============================================================
 // 인증 관련 Enum
@@ -188,6 +215,8 @@ export type AuthType = (typeof AuthType)[keyof typeof AuthType];
 
 /** OTA 제공자 */
 export const OtaProvider = {
+  /** 언플(Un:plug) */
+  UNPL: 'UNPL',
   /** 프론트 */
   FRONT: 'FRONT',
   /** 떠나요 */
@@ -261,6 +290,34 @@ export const KioskSaleState = {
 } as const;
 export type KioskSaleState = (typeof KioskSaleState)[keyof typeof KioskSaleState];
 
+/** 키오스크 이벤트 타입 */
+export const KioskEventType = {
+  /** 고객 접근 */
+  CUSTOMER_APPROACH: 'CUSTOMER_APPROACH',
+  /** 객실 선택 */
+  ROOM_SELECTED: 'ROOM_SELECTED',
+  /** 성인 인증 진행 중 */
+  ADULT_AUTH_IN_PROGRESS: 'ADULT_AUTH_IN_PROGRESS',
+  /** 성인 인증 실패 */
+  ADULT_AUTH_FAILED: 'ADULT_AUTH_FAILED',
+  /** 결제 진행 중 */
+  PAYMENT_IN_PROGRESS: 'PAYMENT_IN_PROGRESS',
+  /** 결제 완료 */
+  PAYMENT_COMPLETED: 'PAYMENT_COMPLETED',
+} as const;
+export type KioskEventType = (typeof KioskEventType)[keyof typeof KioskEventType];
+
+/** 키오스크 입실 유형 */
+export const KioskCheckInType = {
+  /** 대실 */
+  HOURS: 'HOURS',
+  /** 숙박 */
+  DAYS: 'DAYS',
+  /** 예약 */
+  RESERVE: 'RESERVE',
+} as const;
+export type KioskCheckInType = (typeof KioskCheckInType)[keyof typeof KioskCheckInType];
+
 // ============================================================
 // 알림 관련 Enum
 // ============================================================
@@ -273,3 +330,69 @@ export const NotifyActionType = {
   GO_TO_OTA_SETTINGS: 'GO_TO_OTA_SETTINGS',
 } as const;
 export type NotifyActionType = (typeof NotifyActionType)[keyof typeof NotifyActionType];
+
+// ============================================================
+// 도어락 관련 Enum
+// ============================================================
+
+/** 도어락 제조사 */
+export const DoorLockVender = {
+  /** 아이크루 */
+  ICREW: 'ICREW',
+} as const;
+export type DoorLockVender = (typeof DoorLockVender)[keyof typeof DoorLockVender];
+
+/** 도어락 QR 프로토콜 버전 */
+export const DoorLockQrVersion = {
+  /** 미사용 */
+  UNUSE: 'UNUSE',
+  V1: 'V1',
+  V2: 'V2',
+} as const;
+export type DoorLockQrVersion = (typeof DoorLockQrVersion)[keyof typeof DoorLockQrVersion];
+
+/** 도어락 OTP 프로토콜 버전 */
+export const DoorLockOtpVersion = {
+  /** 미사용 */
+  UNUSE: 'UNUSE',
+  V1: 'V1',
+} as const;
+export type DoorLockOtpVersion = (typeof DoorLockOtpVersion)[keyof typeof DoorLockOtpVersion];
+
+/** 도어락 RF 프로토콜 버전 */
+export const DoorLockRfVersion = {
+  /** 미사용 */
+  UNUSE: 'UNUSE',
+  V1: 'V1',
+} as const;
+export type DoorLockRfVersion = (typeof DoorLockRfVersion)[keyof typeof DoorLockRfVersion];
+
+// ============================================================
+// RoomSale 관련 Enum
+// ============================================================
+
+/** 채널 유형 (입실/결제 경로) */
+export const ChannelType = {
+  /** 앱 */
+  APP: 'APP',
+  /** 사용자 */
+  USER: 'USER',
+  /** 디바이스 */
+  DEVICE: 'DEVICE',
+  /** API */
+  API: 'API',
+  /** 키오스크 */
+  KIOSK: 'KIOSK',
+  /** 프론트 */
+  FRONT: 'FRONT',
+} as const;
+export type ChannelType = (typeof ChannelType)[keyof typeof ChannelType];
+
+/** 방문 유형 */
+export const VisitType = {
+  /** 도보 */
+  ON_FOOT: 'ON_FOOT',
+  /** 차량 */
+  ON_CAR: 'ON_CAR',
+} as const;
+export type VisitType = (typeof VisitType)[keyof typeof VisitType];
