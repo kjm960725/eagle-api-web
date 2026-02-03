@@ -6,8 +6,9 @@ iCrew Cloud API를 위한 TypeScript/JavaScript 클라이언트 라이브러리�
 
 - TypeScript로 작성된 완전한 타입 지원
 - REST API 및 WebSocket 실시간 이벤트 지원
+- Zod 기반 모델 스키마 검증
 - ESM 및 CommonJS 모듈 지원
-- Node.js 및 브라우저 환경 지원
+- Node.js 환경 지원
 
 ## 설치
 
@@ -107,10 +108,67 @@ await client.authForUser('user-id', 'password');
 
 클라이언트는 다음 컨트롤러들을 제공합니다:
 
-- `client.controller.room` - 객실 관리
-- `client.controller.device` - 디바이스 관리
-- `client.controller.accom` - 업소 관리
-- `client.controller.user` - 사용자 관리
+| 컨트롤러 | 설명 |
+|---------|------|
+| `client.controller.room` | 객실 관리 (CRUD, 상태 조회) |
+| `client.controller.roomType` | 객실 유형 관리 |
+| `client.controller.roomSale` | 객실 매출 관리 |
+| `client.controller.roomReserve` | 객실 예약 관리 |
+| `client.controller.roomInterrupt` | 객실 인터럽트 관리 |
+| `client.controller.device` | 디바이스 관리 |
+| `client.controller.doorLock` | 도어락 관리 |
+| `client.controller.accom` | 업소 관리 |
+| `client.controller.user` | 사용자 관리 |
+| `client.controller.app` | 앱 관리 |
+| `client.controller.kiosk` | 키오스크 관리 |
+| `client.controller.notify` | 알림 관리 |
+| `client.controller.mileage` | 마일리지 관리 |
+| `client.controller.breakfast` | 조식 메뉴 관리 |
+| `client.controller.reserveAgentConfig` | OTA 연동 설정 |
+| `client.controller.customConfig` | 커스텀 설정 |
+
+## 예제: 객실 매출 생성
+
+```typescript
+// 객실 매출 생성 (결제 정보 포함)
+await client.controller.roomSale.create(accomId, {
+  roomId: 'room-123',
+  stayType: RoomStayType.HOURS,
+  fee: 50000,
+  phones: ['010-1234-5678'],
+  payments: [
+    {
+      type: 'CARD',
+      amount_paid_creadit_card: 50000,
+      payment_date: Date.now(),
+    },
+  ],
+});
+```
+
+## 예제: 키오스크 설정
+
+```typescript
+// 키오스크 업데이트 (TTS 설정 포함)
+await client.controller.kiosk.update(accomId, kioskId, {
+  saleState: KioskSaleState.SELLABLE,
+  useAdultAuth: true,
+  tts: {
+    gender: 'FEMALE',
+    pitch: 0,
+    volume: 0,
+    rate: 1,
+    kr: {
+      greetings: '안녕하세요, 환영합니다.',
+      card_payment_success: '결제가 완료되었습니다.',
+    },
+  },
+  receiptPrinter: {
+    use: true,
+    print_condition: 'WHEN_PRINT_BUTTON_CLICKED',
+  },
+});
+```
 
 ## API 문서
 
